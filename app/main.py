@@ -11,4 +11,7 @@ db = Database(configs.database.connection_string,
 
 app = FastAPI()
 
+app.add_event_handler("startup", db.connect)
+app.add_event_handler("shutdown", db.disconnect)
+
 app.include_router(router, prefix='/v1')
