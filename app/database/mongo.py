@@ -10,10 +10,10 @@ class Database(metaclass=SingletonMeta):
         self._maxPoolSize = maxPoolSize
         self._minPoolSize = minPoolSize
 
-    async def connect():
-        self._client = AsyncIOMotorClient(str(self.connectionString),
+    async def connect(self):
+        self._client = AsyncIOMotorClient(str(self._connectionString),
                                    maxPoolSize=self._maxPoolSize,
                                    minPoolSize=self._minPoolSize)
 
-    async def disconnect():
+    async def disconnect(self):
         self._client.close()
