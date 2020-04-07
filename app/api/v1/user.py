@@ -36,7 +36,7 @@ async def read_me():
     return mock_data[0]
 
 @router.post("/user/", response_model=UserResponse)
-async def create(*, user_request: UserRequest):
+async def create(user_request: UserRequest):
     user_saved = mock_save_user(user_request)
     return user_saved
 
