@@ -7,3 +7,7 @@ class DatabaseConfig():
 
 class Configs(BaseSettings):
     database: DatabaseConfig = DatabaseConfig()
+    project_name: str
+
+    class Config:
+        env_file = ".env"
