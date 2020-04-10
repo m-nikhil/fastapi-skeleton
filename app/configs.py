@@ -1,9 +1,9 @@
-from pydantic import BaseModel, BaseSettings
+from pydantic import BaseSettings
+
 
 class DatabaseConfig():
-    connection_string: str = 'mongodb://localhost:27017/'
-    max_pool_size: int = 100
-    min_pool_size: int = 10
+    connection_string = "postgresql://postgres:database@localhost:5432/db"
+
 
 class Configs(BaseSettings):
     database: DatabaseConfig = DatabaseConfig()

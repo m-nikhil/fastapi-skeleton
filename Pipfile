@@ -10,8 +10,9 @@ mypy = "*"
 fastapi = "*"
 uvicorn = "*"
 python-dotenv = "*"
-motor = "*"
 gunicorn = "*"
+sqlalchemy = "*"
+databases = "*"
 
 [requires]
 python_version = "3.7"
