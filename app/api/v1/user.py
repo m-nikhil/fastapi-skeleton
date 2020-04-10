@@ -1,22 +1,9 @@
 from fastapi import APIRouter
-from typing import List
 
 from app.dtos.userDto import UserRequest, UserResponse, UserPersist
+from app.crud import user
 
 router = APIRouter()
-
-mock_data = [
-    {
-        "email": "user1@example.com",
-        "full_name": "user one",
-        "password": "user1 pass"
-    },
-    {
-        "email": "user2@example.com",
-        "full_name": "user two",
-        "password": "user2 pass"
-    }
-]
 
 
 def mock_password_hasher(raw_password: str):
@@ -30,14 +17,14 @@ def mock_save_user(user_request: UserRequest):
     return user_persist
 
 
-@router.get("/user/", response_model=List[UserResponse])
-async def read():
-    return mock_data
+@router.get("/user/{id}")
+async def read_by_id(id: int):
+    return user.get_user_by_id(id)
 
 
 @router.get("/user/me", response_model=UserResponse)
 async def read_me():
-    return mock_data[0]
+    return user.get_user()
 
 
 @router.post("/user/", response_model=UserResponse)

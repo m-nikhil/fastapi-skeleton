@@ -1,4 +1,5 @@
 import databases
+from sqlalchemy.ext.declarative import declarative_base
 
 from ..utils.singletonMeta import SingletonMeta
 
@@ -14,3 +15,6 @@ class Database(metaclass=SingletonMeta):
 
     async def disconnect(self):
         await self._database.disconnect()
+
+
+Base = declarative_base()
