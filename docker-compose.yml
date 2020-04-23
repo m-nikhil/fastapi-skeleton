@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: postgis/postgis
+    env_file:
+      - .env
+  web_app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
