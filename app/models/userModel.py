@@ -1,7 +1,9 @@
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import String
+
 from app.models.base import Base
 
-from sqlalchemy import Boolean, Column, Integer, String
-from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
