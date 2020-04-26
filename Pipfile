@@ -19,6 +19,7 @@ databases = "*"
 asyncpg = "*"
 alembic = "*"
 psycopg2-binary = "*"
+email-validator = "*"
 
 [requires]
 python_version = "3.7"
