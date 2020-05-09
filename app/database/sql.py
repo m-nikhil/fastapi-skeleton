@@ -1,7 +1,10 @@
+import logging
+
 import databases
 
 from ..utils.singletonMeta import SingletonMeta
 
+logger = logging.getLogger(__name__)
 
 # Driver support is providing using one of asyncpg, aiomysql, or aiosqlite.
 class Database(metaclass=SingletonMeta):
@@ -27,6 +30,8 @@ class Database(metaclass=SingletonMeta):
 
     async def connect(self):
         await self._database.connect()
+        logger.info("DB Connection established")
 
     async def disconnect(self):
         await self._database.disconnect()
+        logger.info("DB Connection closed")
